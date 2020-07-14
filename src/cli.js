@@ -5,7 +5,7 @@ const getName = () => {
   return name;
 };
 
-export const makeHello = () => {
+export default () => {
   const name = getName();
   console.log(`Hello, ${name}!`);
 };
