@@ -5,4 +5,5 @@
 
 
 ## Demo
-[![Demo](https://asciinema.org/a/UoqoXCmbN9DBFjUavkWy9UbW8.png)](https://asciinema.org/a/UoqoXCmbN9DBFjUavkWy9UbW8)
+[![Brain-even](https://asciinema.org/a/UoqoXCmbN9DBFjUavkWy9UbW8.png)](https://asciinema.org/a/UoqoXCmbN9DBFjUavkWy9UbW8)
+[![Brain-calc](https://asciinema.org/a/P6A6NbwLkc5Ma6Wdn854d3OGN.png)](https://asciinema.org/a/P6A6NbwLkc5Ma6Wdn854d3OGN)
