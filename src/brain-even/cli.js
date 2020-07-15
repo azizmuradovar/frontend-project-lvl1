@@ -39,7 +39,7 @@ const finishGame = (isWinner, name) => {
   }
 };
 
-const startGame = (name) => {
+const initGame = (name) => {
   let counter = 0;
   let isWinner = true;
   while (counter < 3 && isWinner === true) {
@@ -64,5 +64,5 @@ export default () => {
   const name = getUserName();
   welcomeUser(name);
   printRules();
-  startGame(name);
+  initGame(name);
 };
