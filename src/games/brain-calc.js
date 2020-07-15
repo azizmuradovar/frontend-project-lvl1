@@ -38,6 +38,6 @@ const getRightAnswer = (expression) => {
 };
 
 export default () => {
-  const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
+  const rules = 'What is the result of the expression?';
   initGame(rules, getQuestion, getRightAnswer);
 };
