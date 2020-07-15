@@ -5,7 +5,7 @@
 
 
 ## Demo Brain-even
-[![asciicast](https://asciinema.org/a/UoqoXCmbN9DBFjUavkWy9UbW8.png)](https://asciinema.org/a/UoqoXCmbN9DBFjUavkWy9UbW8)
+[![asciicast](https://asciinema.org/a/347764.svg)](https://asciinema.org/a/347764)
 
 ## Demo Brain-calc
 [![asciicast](https://asciinema.org/a/P6A6NbwLkc5Ma6Wdn854d3OGN.png)](https://asciinema.org/a/P6A6NbwLkc5Ma6Wdn854d3OGN)
