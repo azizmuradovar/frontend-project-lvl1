@@ -1,19 +1,14 @@
 // import readlineSync from 'readline-sync';
 import initGame from '../index.js';
+import { getRandomInt, getRandomIntFormRange } from '../lib.js';
 
 const expressionSymbols = ['+', '-', '*'];
-
-const getRandomInt = () => Math.ceil(Math.random() * 100);
-
-const randomInteger = (min, max) => {
-  const rand = min + Math.random() * (max + 1 - min);
-  return Math.floor(rand);
-};
 
 const getQuestion = () => {
   const value1 = getRandomInt();
   const value2 = getRandomInt();
-  const expressionSymbol = expressionSymbols[randomInteger(0, expressionSymbols.length - 1)];
+  const randomIndexSymbol = getRandomIntFormRange(0, expressionSymbols.length - 1);
+  const expressionSymbol = expressionSymbols[randomIndexSymbol];
   return `${value1} ${expressionSymbol} ${value2}`;
 };
 

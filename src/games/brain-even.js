@@ -1,9 +1,8 @@
 // import readlineSync from 'readline-sync';
 import initGame from '../index.js';
+import { getRandomInt, isEven } from '../lib.js';
 
-const getRandomInt = () => Math.ceil(Math.random() * 100);
-
-const isEven = (number) => (number % 2 === 0);
+const getQuestion = () => getRandomInt();
 
 const getRightAnswer = (number) => {
   const rightAnswer = isEven(number) ? 'yes' : 'no';
@@ -12,5 +11,5 @@ const getRightAnswer = (number) => {
 
 export default () => {
   const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
-  initGame(rules, getRandomInt, getRightAnswer);
+  initGame(rules, getQuestion, getRightAnswer);
 };
