@@ -12,3 +12,6 @@
 
 ## Demo Brain-gcd
 [![asciicast](https://asciinema.org/a/347905.svg)](https://asciinema.org/a/347905)
+
+## Demo Brain-progression
+[![asciicast](https://asciinema.org/a/348434.svg)](https://asciinema.org/a/348434)
