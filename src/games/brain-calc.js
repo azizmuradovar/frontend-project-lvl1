@@ -4,27 +4,22 @@ import { getRandomInt, getRandomIntFormRange } from '../lib.js';
 
 const expressionSymbols = ['+', '-', '*'];
 
-const getQuestion = () => {
-  const value1 = getRandomInt();
-  const value2 = getRandomInt();
-  const randomIndexSymbol = getRandomIntFormRange(0, expressionSymbols.length - 1);
-  const expressionSymbol = expressionSymbols[randomIndexSymbol];
-  return `${value1} ${expressionSymbol} ${value2}`;
-};
+const getQuestionStr = (value1, value2, expressionSymbol) => (
+  `${value1} ${expressionSymbol} ${value2}`
+);
 
-const getRightAnswer = (expression) => {
-  const [value1, expressionSymbol, value2] = expression.split(' ');
+const getRightAnswer = (value1, value2, expressionSymbol) => {
   let rightAnswer = '';
 
   switch (expressionSymbol) {
     case '+':
-      rightAnswer = `${Number(value1) + Number(value2)}`;
+      rightAnswer = `${value1 + value2}`;
       break;
     case '-':
-      rightAnswer = `${Number(value1) - Number(value2)}`;
+      rightAnswer = `${value1 - value2}`;
       break;
     case '*':
-      rightAnswer = `${Number(value1) * Number(value2)}`;
+      rightAnswer = `${value1 * value2}`;
       break;
     default:
       break;
@@ -32,7 +27,19 @@ const getRightAnswer = (expression) => {
   return rightAnswer;
 };
 
+const getExerciseInfo = () => {
+  const value1 = getRandomInt();
+  const value2 = getRandomInt();
+  const randomIndexSymbol = getRandomIntFormRange(0, expressionSymbols.length - 1);
+  const expressionSymbol = expressionSymbols[randomIndexSymbol];
+  const exercise = getQuestionStr(value1, value2, expressionSymbol);
+  return {
+    exercise,
+    rightAnswer: getRightAnswer(value1, value2, expressionSymbol),
+  };
+};
+
 export default () => {
   const rules = 'What is the result of the expression?';
-  initGame(rules, getQuestion, getRightAnswer);
+  initGame(rules, getExerciseInfo);
 };

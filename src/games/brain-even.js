@@ -9,7 +9,15 @@ const getRightAnswer = (number) => {
   return rightAnswer;
 };
 
+const getExerciseInfo = () => {
+  const exercise = getQuestion();
+  return {
+    exercise,
+    rightAnswer: getRightAnswer(exercise),
+  };
+};
+
 export default () => {
   const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
-  initGame(rules, getQuestion, getRightAnswer);
+  initGame(rules, getExerciseInfo);
 };

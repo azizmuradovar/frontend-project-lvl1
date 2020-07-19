@@ -2,19 +2,16 @@
 import initGame from '../index.js';
 import { getRandomInt, getGCD } from '../lib.js';
 
-const getQuestion = () => {
+const getExerciseInfo = () => {
   const number1 = getRandomInt();
   const number2 = getRandomInt();
-  return `${number1} ${number2}`;
-};
-
-const getRightAnswer = (numbers) => {
-  const [number1, number2] = numbers.split(' ');
-  const rightAnswer = getGCD(Number(number1), Number(number2));
-  return `${rightAnswer}`;
+  return {
+    exercise: `${number1} ${number2}`,
+    rightAnswer: `${getGCD(number1, number2)}`,
+  };
 };
 
 export default () => {
   const rules = 'Find the greatest common divisor of given numbers.';
-  initGame(rules, getQuestion, getRightAnswer);
+  initGame(rules, getExerciseInfo);
 };

@@ -16,18 +16,17 @@ const printRules = (rule) => {
   console.log(rule);
 };
 
-const printQuestion = (value) => {
+const printExercise = (value) => {
   console.log(`Question: ${value}`);
 };
 
-const startGame = (getQuestionValue, getRightAnswer) => {
+const startGame = (getExerciseInfo) => {
   let counter = 0;
   let isWinner = true;
   while (counter < 3 && isWinner === true) {
-    const questionValue = getQuestionValue();
-    printQuestion(questionValue);
+    const { exercise, rightAnswer } = getExerciseInfo();
+    printExercise(exercise);
     const userAnswer = getUserAnswer();
-    const rightAnswer = getRightAnswer(questionValue);
     const isRightAnswer = userAnswer === rightAnswer;
     if (isRightAnswer) {
       counter += 1;
@@ -48,11 +47,11 @@ const finishGame = (isWinner, name) => {
   }
 };
 
-export default (rules, getQuestion, getRightAnswer) => {
+export default (rules, getExerciseInfo) => {
   welcome();
   const name = getUserName();
   greetingUser(name);
   printRules(rules);
-  const isWinner = startGame(getQuestion, getRightAnswer);
+  const isWinner = startGame(getExerciseInfo);
   finishGame(isWinner, name);
 };
