@@ -20,3 +20,17 @@ export const getGCD = (number1, number2) => {
   }
   return result;
 };
+
+export const isPrime = (num) => {
+  if (num <= 1) {
+    return false;
+  }
+  for (let counter = 2; counter < num; counter += 1) {
+    if (num % counter === 0) {
+      return false;
+    }
+  }
+  return true;
+};
+
+export default isPrime;
