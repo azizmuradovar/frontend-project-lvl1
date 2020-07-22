@@ -1,23 +1,32 @@
 // import readlineSync from 'readline-sync';
 import initGame from '../index.js';
-import { getRandomInt, getRandomIntFormRange } from '../lib.js';
+import { getRandomInt, getRandomIntFromRange } from '../lib.js';
 
-const getExerciseInfo = () => {
-  const hideElementIndex = getRandomIntFormRange(0, 9);
-  const progressionValue = getRandomInt();
-  const exercise = [getRandomInt()];
-  for (let i = 1; i <= 9; i += 1) {
-    exercise.push(exercise[i - 1] + progressionValue);
+const description = 'What number is missing in the progression?';
+const PROGRESSION_LENGTH = 10;
+
+const buildProgression = (firstElem, step, length) => {
+  const result = [];
+  for (let i = 0; i <= length - 1; i += 1) {
+    result.push(firstElem + step * i);
   }
-  const rightAnswer = `${exercise[hideElementIndex]}`;
-  exercise[hideElementIndex] = '..';
+  return result;
+};
+
+const genRoundData = () => {
+  const hideElementIndex = getRandomIntFromRange(0, PROGRESSION_LENGTH - 1);
+  const step = getRandomInt();
+  const firstElem = getRandomInt();
+  const progression = buildProgression(firstElem, step, PROGRESSION_LENGTH);
+  const rightAnswer = toString(progression[hideElementIndex]);
+  progression[hideElementIndex] = '..';
+  const question = `[${progression.join(', ')}]`;
   return {
-    exercise,
+    question,
     rightAnswer,
   };
 };
 
 export default () => {
-  const rules = 'What number is missing in the progression?';
-  initGame(rules, getExerciseInfo);
+  initGame(description, genRoundData);
 };

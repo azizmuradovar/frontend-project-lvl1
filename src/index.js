@@ -1,5 +1,7 @@
 import readlineSync from 'readline-sync';
 
+const ROUNDS_COUNT = 3;
+
 const welcome = () => {
   console.log('Welcome to the Brain Games!');
 };
@@ -12,31 +14,27 @@ const greetingUser = (name) => {
   console.log(`Hello, ${name}!`);
 };
 
-const printRules = (rule) => {
-  console.log(rule);
+const printDescription = (description) => {
+  console.log(description);
 };
 
-const printExercise = (value) => {
+const printQuestion = (value) => {
   console.log(`Question: ${value}`);
 };
 
-const startGame = (getExerciseInfo) => {
-  let counter = 0;
-  let isWinner = true;
-  while (counter < 3 && isWinner === true) {
-    const { exercise, rightAnswer } = getExerciseInfo();
-    printExercise(exercise);
+const startGame = (genRoundData) => {
+  for (let i = 0; i < ROUNDS_COUNT; i += 1) {
+    const { question, rightAnswer } = genRoundData();
+    printQuestion(question);
     const userAnswer = getUserAnswer();
-    const isRightAnswer = userAnswer === rightAnswer;
-    if (isRightAnswer) {
-      counter += 1;
-      console.log('Correct!');
-    } else {
-      isWinner = false;
+    const isWrongAnswer = userAnswer !== rightAnswer;
+    if (isWrongAnswer) {
       console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${rightAnswer}".`);
+      return false;
     }
+    console.log('Correct!');
   }
-  return isWinner;
+  return true;
 };
 
 const finishGame = (isWinner, name) => {
@@ -47,11 +45,11 @@ const finishGame = (isWinner, name) => {
   }
 };
 
-export default (rules, getExerciseInfo) => {
+export default (description, genRoundData) => {
   welcome();
   const name = getUserName();
   greetingUser(name);
-  printRules(rules);
-  const isWinner = startGame(getExerciseInfo);
+  printDescription(description);
+  const isWinner = startGame(genRoundData);
   finishGame(isWinner, name);
 };

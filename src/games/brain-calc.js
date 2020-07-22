@@ -1,45 +1,40 @@
 // import readlineSync from 'readline-sync';
 import initGame from '../index.js';
-import { getRandomInt, getRandomIntFormRange } from '../lib.js';
+import { getRandomInt, getRandomIntFromRange } from '../lib.js';
+
+const description = 'What is the result of the expression?';
 
 const expressionSymbols = ['+', '-', '*'];
 
-const getQuestionStr = (value1, value2, expressionSymbol) => (
+const getQuestion = (value1, value2, expressionSymbol) => (
   `${value1} ${expressionSymbol} ${value2}`
 );
 
 const getRightAnswer = (value1, value2, expressionSymbol) => {
-  let rightAnswer = '';
-
   switch (expressionSymbol) {
     case '+':
-      rightAnswer = `${value1 + value2}`;
-      break;
+      return `${value1 + value2}`;
     case '-':
-      rightAnswer = `${value1 - value2}`;
-      break;
+      return `${value1 - value2}`;
     case '*':
-      rightAnswer = `${value1 * value2}`;
-      break;
+      return `${value1 * value2}`;
     default:
-      break;
+      throw new Error(`Unknown expression Symbol: '${expressionSymbol}'!`);
   }
-  return rightAnswer;
 };
 
-const getExerciseInfo = () => {
+const genRoundData = () => {
   const value1 = getRandomInt();
   const value2 = getRandomInt();
-  const randomIndexSymbol = getRandomIntFormRange(0, expressionSymbols.length - 1);
+  const randomIndexSymbol = getRandomIntFromRange(0, expressionSymbols.length - 1);
   const expressionSymbol = expressionSymbols[randomIndexSymbol];
-  const exercise = getQuestionStr(value1, value2, expressionSymbol);
+  const question = getQuestion(value1, value2, expressionSymbol);
   return {
-    exercise,
+    question,
     rightAnswer: getRightAnswer(value1, value2, expressionSymbol),
   };
 };
 
 export default () => {
-  const rules = 'What is the result of the expression?';
-  initGame(rules, getExerciseInfo);
+  initGame(description, genRoundData);
 };
