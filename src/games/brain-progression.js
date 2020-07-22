@@ -18,7 +18,7 @@ const genRoundData = () => {
   const step = getRandomInt();
   const firstElem = getRandomInt();
   const progression = buildProgression(firstElem, step, PROGRESSION_LENGTH);
-  const rightAnswer = toString(progression[hideElementIndex]);
+  const rightAnswer = String(progression[hideElementIndex]);
   progression[hideElementIndex] = '..';
   const question = `[${progression.join(', ')}]`;
   return {

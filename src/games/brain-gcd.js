@@ -26,7 +26,7 @@ const genRoundData = () => {
   const number2 = getRandomInt();
   return {
     question: `${number1} ${number2}`,
-    rightAnswer: toString(getGCD(number1, number2)),
+    rightAnswer: String(getGCD(number1, number2)),
   };
 };
 
