@@ -6,11 +6,11 @@ const description = 'What number is missing in the progression?';
 const PROGRESSION_LENGTH = 10;
 
 const buildProgression = (firstElem, step, length) => {
-  const result = [];
+  const progression = [];
   for (let i = 0; i <= length - 1; i += 1) {
-    result.push(firstElem + step * i);
+    progression.push(firstElem + step * i);
   }
-  return result;
+  return progression;
 };
 
 const genRoundData = () => {
@@ -20,7 +20,7 @@ const genRoundData = () => {
   const progression = buildProgression(firstElem, step, PROGRESSION_LENGTH);
   const rightAnswer = String(progression[hideElementIndex]);
   progression[hideElementIndex] = '..';
-  const question = `[${progression.join(', ')}]`;
+  const question = progression.join(', ');
   return {
     question,
     rightAnswer,

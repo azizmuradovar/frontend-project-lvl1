@@ -8,16 +8,13 @@ const getQuestion = () => getRandomInt();
 
 const isEven = (number) => (number % 2 === 0);
 
-const getRightAnswer = (number) => {
-  const rightAnswer = isEven(number) ? 'yes' : 'no';
-  return rightAnswer;
-};
+const getAnswer = (number) => (isEven(number) ? 'yes' : 'no');
 
 const genRoundData = () => {
   const question = getQuestion();
   return {
     question,
-    rightAnswer: getRightAnswer(question),
+    rightAnswer: getAnswer(question),
   };
 };
 

@@ -4,34 +4,36 @@ import { getRandomInt, getRandomIntFromRange } from '../lib.js';
 
 const description = 'What is the result of the expression?';
 
-const expressionSymbols = ['+', '-', '*'];
+const operators = ['+', '-', '*'];
 
-const getQuestion = (value1, value2, expressionSymbol) => (
-  `${value1} ${expressionSymbol} ${value2}`
+const getQuestion = (value1, value2, operator) => (
+  `${value1} ${operator} ${value2}`
 );
 
-const getRightAnswer = (value1, value2, expressionSymbol) => {
-  switch (expressionSymbol) {
+const calculate = (num1, num2, operator) => {
+  switch (operator) {
     case '+':
-      return `${value1 + value2}`;
+      return num1 + num2;
     case '-':
-      return `${value1 - value2}`;
+      return num1 - num2;
     case '*':
-      return `${value1 * value2}`;
+      return num1 * num2;
     default:
-      throw new Error(`Unknown expression Symbol: '${expressionSymbol}'!`);
+      throw new Error(`Unknown expression Symbol: '${operator}'!`);
   }
 };
 
+const getAnswer = (num) => num.toString();
+
 const genRoundData = () => {
-  const value1 = getRandomInt();
-  const value2 = getRandomInt();
-  const randomIndexSymbol = getRandomIntFromRange(0, expressionSymbols.length - 1);
-  const expressionSymbol = expressionSymbols[randomIndexSymbol];
-  const question = getQuestion(value1, value2, expressionSymbol);
+  const num1 = getRandomInt();
+  const num2 = getRandomInt();
+  const randomIndexOperator = getRandomIntFromRange(0, operators.length - 1);
+  const operator = operators[randomIndexOperator];
+  const question = getQuestion(num1, num2, operator);
   return {
     question,
-    rightAnswer: getRightAnswer(value1, value2, expressionSymbol),
+    rightAnswer: getAnswer(calculate(num1, num2, operator)),
   };
 };
 
